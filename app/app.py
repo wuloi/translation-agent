@@ -231,7 +231,7 @@ JS = """
 
 """
 
-with gr.Blocks(theme="soft", css=CSS, fill_height=True) as demo:
+with gr.Blocks(theme="default", css=CSS, fill_height=True) as demo:
     with gr.Row():
         visible = gr.State(value=True)
         menu_btn = gr.Button(
@@ -282,15 +282,15 @@ with gr.Blocks(theme="soft", css=CSS, fill_height=True) as demo:
             with gr.Row():
                 source_lang = gr.Textbox(
                     label="源语言",
-                    value="English",
+                    value="中文",
                     elem_classes="lang",
                 )
                 target_lang = gr.Textbox(
                     label="目标语言",
-                    value="Chinese",
+                    value="英语",
                     elem_classes="lang",
                 )
-            switch_btn = gr.Button(value="🔄️")
+            switch_btn = gr.Button(value="🔄️ 切换")
             country = gr.Textbox(
                 label="国家", value="China", max_lines=1
             )
@@ -323,7 +323,7 @@ with gr.Blocks(theme="soft", css=CSS, fill_height=True) as demo:
         with gr.Column(scale=4):
             source_text = gr.Textbox(
                 label="源文本",
-                value="If one advances confidently in the direction of his dreams, and endeavors to live the life which he has imagined, he will meet with a success unexpected in common hours.",
+                value="如果她朝着梦想迈进，努力实现她所设想的人生，那么她就会在平常时刻获得意外的成功。",
                 lines=12,
             )
             with gr.Tab("最终结果"):
