@@ -1,182 +1,167 @@
-<!-- omit in toc -->
-# Contributing to translation-agent
+以下是提供的英文文档的中文翻译：
 
-First off, thanks for taking the time to contribute!
+<!-- 目录省略 -->
+# 为 translation-agent 贡献代码
 
-All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions.
+首先，感谢你抽出时间来贡献！
 
-> And if you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:
-> - Star the project
-> - Tweet about it
-> - Refer this project in your project's readme
-> - Mention the project at local meetups and tell your friends/colleagues
+我们鼓励并重视所有类型的贡献。查看[目录](#目录)了解不同的帮助方式以及这个项目如何处理它们的细节。在做出贡献之前，请确保阅读了相关部分。这将使我们的维护者工作更轻松，也使所有参与者的体验更顺畅。社区期待你的贡献。
 
-<!-- omit in toc -->
-## Table of Contents
+> 如果你喜欢这个项目，但没有时间贡献，那也没关系。还有其他简单的方法来支持项目并表达你的感激之情，我们也会非常高兴：
+> - 给项目加星
+> - 在推特上谈论它
+> - 在你的项目 readme 中引用此项目
+> - 在当地的聚会中提及该项目，并告诉你的朋友/同事
 
-- [I Have a Question](#i-have-a-question)
-- [I Want To Contribute](#i-want-to-contribute)
-  - [Reporting Bugs](#reporting-bugs)
-  - [Suggesting Enhancements](#suggesting-enhancements)
-  - [Your First Code Contribution](#your-first-code-contribution)
-  - [Improving The Documentation](#improving-the-documentation)
-- [Styleguides](#styleguides)
-  - [Commit Messages](#commit-messages)
+<!-- 目录省略 -->
+## 目录
 
+- [我有问题](#我有问题)
+- [我想贡献](#我想贡献)
+  - [报告错误](#报告错误)
+  - [建议改进](#建议改进)
+  - [你的第一次代码贡献](#你的第一次代码贡献)
+  - [改进文档](#改进文档)
+- [风格指南](#风格指南)
+  - [提交信息](#提交信息)
 
+## 我有问题
 
+> 如果你想问问题，我们假设你已经阅读了可用的[文档](https://github.com/andrewyng/translation-agent/blob/main/README.md)。
 
-## I Have a Question
+在提问之前，最好先搜索现有的[问题](https://github.com/andrewyng/translation-agent/issues)，这可能会对你有帮助。如果你找到了合适的问题但仍然需要澄清，你可以在这个问题中写下你的问题。此外，建议首先在互联网上搜索答案。
 
-> If you want to ask a question, we assume that you have read the available [Documentation](https://github.com/andrewyng/translation-agent/blob/main/README.md).
+如果你仍然觉得有必要提问并需要澄清，我们建议如下：
 
-Before you ask a question, it is best to search for existing [Issues](https://github.com/andrewyng/translation-agent/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
+- 打开一个[问题](https://github.com/andrewyng/translation-agent/issues/new)。
+- 提供尽可能多的关于你遇到的问题的上下文。
+- 根据相关性，提供项目和平台版本（Python、操作系统等）。
 
-If you then still feel the need to ask a question and need clarification, we recommend the following:
+我们（或社区中的其他人）将尽快处理这个问题。
 
-- Open an [Issue](https://github.com/andrewyng/translation-agent/issues/new).
-- Provide as much context as you can about what you're running into.
-- Provide project and platform versions (python, OS, etc.), depending on what seems relevant.
+## 我想贡献
 
-We (or someone in the community) will then take care of the issue as soon as possible.
+> ### 法律声明 <!-- 目录省略 -->
+> 当你向这个项目贡献时，你必须同意你已经编写了100%的内容，你拥有内容所需的必要权利，并且你贡献的内容可能在项目许可下提供。
 
-<!--
-You might want to create a separate issue tag for questions and include it in this description. People should then tag their issues accordingly.
+### 报告错误
 
--->
+<!-- 目录省略 -->
+#### 提交错误报告之前
 
-## I Want To Contribute
+一个好的错误报告不应该让别人需要追着你要求更多信息。因此，我们要求你仔细调查，收集信息，并在你的报告中详细描述问题。请提前完成以下步骤，以帮助我们尽快修复任何潜在的错误。
 
-> ### Legal Notice <!-- omit in toc -->
-> When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
+- 确保你使用的是最新版本。
+- 确定你的错误是否真的是一个错误，而不是你这边的错误，例如使用不兼容的环境组件/版本（确保你已经阅读了[文档](https://github.com/andrewyng/translation-agent/blob/main/README.md)。如果你正在寻求支持，你可能想要查看[这个部分](#我有问题)）。
+- 为了看看其他用户是否已经经历了（并且可能已经解决了）你遇到的问题，请检查[错误跟踪器](https://github.com/andrewyng/translation-agent/issues?q=label%3Abug)中是否已经存在针对你的错误或错误的错误报告。
+- 同样确保在互联网上搜索（包括 Stack Overflow），看看 GitHub 社区之外的用户是否已经讨论了这个问题。
+- 收集关于错误的信息：
+  - 堆栈跟踪（Traceback）
+  - 操作系统、平台和版本（Windows、Linux、macOS、x86、ARM）
+  - 根据相关性，解释器、编译器、SDK、运行时环境、包管理器的版本。
+  - 可能你的输入和输出
+  - 你能否可靠地重现这个问题？你也能在旧版本中重现它吗？
 
-### Reporting Bugs
+<!-- 目录省略 -->
+#### 如何提交一个好的错误报告？
 
-<!-- omit in toc -->
-#### Before Submitting a Bug Report
+> 你绝不应该在问题跟踪器或其他地方公开报告与安全相关的问题、漏洞或错误，包括敏感信息。相反，敏感的错误必须通过电子邮件发送到 <joaquin.dominguez@proton.me>。
+<!-- 你也可以添加一个 PGP 密钥，以允许加密发送消息。 -->
 
-A good bug report shouldn't leave others needing to chase you up for more information. Therefore, we ask you to investigate carefully, collect information and describe the issue in detail in your report. Please complete the following steps in advance to help us fix any potential bug as fast as possible.
+我们使用 GitHub 问题来跟踪错误和故障。如果你在使用项目时遇到问题：
 
-- Make sure that you are using the latest version.
-- Determine if your bug is really a bug and not an error on your side e.g. using incompatible environment components/versions (Make sure that you have read the [documentation](https://github.com/andrewyng/translation-agent/blob/main/README.md). If you are looking for support, you might want to check [this section](#i-have-a-question)).
-- To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the [bug tracker](https://github.com/andrewyng/translation-agentissues?q=label%3Abug).
-- Also make sure to search the internet (including Stack Overflow) to see if users outside of the GitHub community have discussed the issue.
-- Collect information about the bug:
-  - Stack trace (Traceback)
-  - OS, Platform and Version (Windows, Linux, macOS, x86, ARM)
-  - Version of the interpreter, compiler, SDK, runtime environment, package manager, depending on what seems relevant.
-  - Possibly your input and the output
-  - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
+- 打开一个[问题](https://github.com/andrewyng/translation-agent/issues/new)。（由于我们目前不能确定这是否是一个错误，我们要求你不要谈论错误，也不要标记问题。）
+- 解释你期望的行为和实际行为。
+- 请尽可能提供更多上下文，并描述其他人可以遵循的*重现步骤*，以便他们自己重现问题。这通常包括你的代码。对于好的错误的报告，你应该隔离问题并创建一个简化的测试用例。
+- 提供上一节中收集的信息。
 
-<!-- omit in toc -->
-#### How Do I Submit a Good Bug Report?
+一旦提交：
 
-> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <joaquin.dominguez@proton.me>.
-<!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
+- 项目团队将相应地标记问题。
+- 团队成员将尝试使用你提供的步骤重现问题。如果没有重现步骤或没有明显的方法来重现问题，团队将要求你提供这些步骤，并将问题标记为 `needs-repro`。带有 `needs-repro` 标签的错误将不会被解决，直到它们被重现。
+- 如果团队能够重现问题，它将被标记为 `needs-fix`，也可能有其他标签（例如 `critical`），并且问题将留给[某人](#你的第一次代码贡献)来实现。
 
-We use GitHub issues to track bugs and errors. If you run into an issue with the project:
+请使用提供的问题模板。
 
-- Open an [Issue](https://github.com/andrewyng/translation-agent/issues/new). (Since we can't be sure at this point whether it is a bug or not, we ask you not to talk about a bug yet and not to label the issue.)
-- Explain the behavior you would expect and the actual behavior.
-- Please provide as much context as possible and describe the *reproduction steps* that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
-- Provide the information you collected in the previous section.
+### 建议改进
 
-Once it's filed:
+本节指导你提交 translation-agent 的改进建议，**包括完全新功能和对现有功能的次要改进**。遵循这些指南将帮助维护者和社区理解你的建议并找到相关建议。
 
-- The project team will label the issue accordingly.
-- A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps and mark the issue as `needs-repro`. Bugs with the `needs-repro` tag will not be addressed until they are reproduced.
-- If the team is able to reproduce the issue, it will be marked `needs-fix`, as well as possibly other tags (such as `critical`), and the issue will be left to be [implemented by someone](#your-first-code-contribution).
+<!-- 目录省略 -->
+#### 提交改进之前
 
-Please use the issue templates provided.
+- 确保你使用的是最新版本。
+- 仔细阅读[文档](https://github.com/andrewyng/translation-agent/blob/main/README.md)，找出功能是否已经被覆盖，也许通过单独的配置。
+- 执行[搜索](https://github.com/andrewyng/translation-agent/issues)，看看是否有人已经提出了改进。如果有，请在现有问题上添加评论，而不是打开一个新的问题。
+- 找出你的想法是否符合项目的范围和目标。这取决于你来说服项目的开发人员这个功能的优越性。记住，我们想要的功能是对我们大多数用户都有用，而不仅仅是一小部分。如果你只是针对少数用户，请考虑编写一个插件/库。
 
-<!-- You might want to create an issue template for bugs and errors that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
+<!-- 目录省略 -->
+#### 如何提交一个好的改进建议？
 
+改进建议作为 [GitHub 问题](https://github.com/andrewyng/translation-agent/issues) 进行跟踪。
 
-### Suggesting Enhancements
+- 使用**清晰且描述性的标题**来标识问题，以识别建议。
+- 提供**建议改进的逐步描述**，尽可能详细。
+- **描述当前行为**并**解释你期望看到的替代行为**以及为什么。在这一点上，你还可以说明哪些替代方案对你不起作用。
+- 你可能想要**包括截图和动画 GIF**，这有助于你演示步骤或指出建议相关的部分。你可以使用[这个工具](https://www.cockos.com/licecap/)在 macOS 和 Windows 上录制 GIF，以及 [这个工具](https://github.com/colinkeenan/silentcast) 或 [这个工具](https://github.com/GNOME/byzanz) 在 Linux 上。 <!-- 如果项目有 GUI，这应该只包括 -->
+- **解释这个改进对大多数 translation-agent 用户为什么有用**。你也可以指出其他项目更好地解决了这个问题，并且可以作为灵感。
 
-This section guides you through submitting an enhancement suggestion for translation-agent, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
+### 你的第一次代码贡献
 
-<!-- omit in toc -->
-#### Before Submitting an Enhancement
+#### 先决条件
 
-- Make sure that you are using the latest version.
-- Read the [documentation](https://github.com/andrewyng/translation-agent/blob/main/README.md) carefully and find out if the functionality is already covered, maybe by an individual configuration.
-- Perform a [search](https://github.com/andrewyng/translation-agent/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
-- Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you're just targeting a minority of users, consider writing an add-on/plugin library.
-
-<!-- omit in toc -->
-#### How Do I Submit a Good Enhancement Suggestion?
-
-Enhancement suggestions are tracked as [GitHub issues](https://github.com/andrewyng/translation-agent/issues).
-
-- Use a **clear and descriptive title** for the issue to identify the suggestion.
-- Provide a **step-by-step description of the suggested enhancement** in as many details as possible.
-- **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
-- You may want to **include screenshots and animated GIFs** which help you demonstrate the steps or point out the part which the suggestion is related to. You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) or [this tool](https://github.com/GNOME/byzanz) on Linux. <!-- this should only be included if the project has a GUI -->
-- **Explain why this enhancement would be useful** to most translation-agent users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
-
-<!-- You might want to create an issue template for enhancement suggestions that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
-
-### Your First Code Contribution
-
-#### Pre-requisites
-
-You should first [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) the `translation-agent` repository and then clone your forked repository:
+你应该首先[分叉](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) `translation-agent` 仓库，然后克隆你分叉的仓库：
 
 ```bash
-git clone https://github.com/<YOUR_GITHUB_USER>/translation-agent.git
+git clone https://github.com/<YOUR_GITHUB_USER>/translation-agent.git 
 ```
 
-
-
-Once in the cloned repository directory, make a branch on the forked repository with your username and description of PR:
+进入克隆的仓库目录后，在分叉的仓库上用你的用户名和 PR 描述创建一个分支：
 ```bash
 git checkout -B <username>/<description>
 ```
 
-Please install the development and test dependencies:
+请安装开发和测试依赖项：
 ```bash
 poetry install --with dev,test
 ```
 
-`translation-agent` uses pre-commit to ensure the formatting is consistent:
+`translation-agent` 使用 pre-commit 来确保格式一致：
 ```bash
 pre-commit install
 ```
 
-**Make suggested changes**
+**提出建议的更改**
 
-Afterwards, our suite of formatting tests will run automatically before each `git commit`. You can also run these manually:
+之后，我们的格式化测试套件将在每次 `git commit` 之前自动运行。你也可以手动运行它们：
 ```bash
 pre-commit run --all-files
 ```
 
-If a formatting test fails, it will fix the modified code in place and abort the `git commit`. After looking over the changes, you can `git add <modified files>` and then repeat the previous git commit command.
+如果格式化测试失败，它将在原地修复修改的代码并中止 `git commit`。在查看更改后，你可以 `git add <modified files>`，然后重复之前的 git 提交命令。
 
-**Note**: a github workflow will check the files with the same formatter and reject the PR if it doesn't pass, so please make sure it passes locally.
+**注意**：一个 github 工作流将使用相同的格式化程序检查文件，并在不通过时拒绝 PR，所以请确保它在本地通过。
 
-
-#### Testing
-`translation-agent` tracks unit tests. Pytest is used to execute said unit tests in `tests/`:
+#### 测试
+`translation-agent` 跟踪单元测试。Pytest 用于执行 `tests/` 中的单元测试：
 
 ```bash
 pytest tests
 ```
 
-If your code changes implement a new function, please make a corresponding unit test to the `test/*` files.
+如果你的代码更改实现了一个新功能，请为 `test/*` 文件做一个相应的单元测试。
 
-#### Contributing Workflow
-We actively welcome your pull requests.
+#### 贡献工作流程
+我们积极欢迎你的拉取请求。
 
-1. Create your new branch from main in your forked repo, with your username and a name describing the work you're completing e.g. user-123/add-feature-x.
-2. If you've added code that should be tested, add tests. Ensure all tests pass. See the testing section for more information.
-3. If you've changed APIs, update the documentation.
-4. Make sure your code lints.
+1. 从你分叉的仓库中的 main 创建你的新分支，用你的用户名和描述你正在完成的工作的名称，例如 user-123/add-feature-x。
+2. 如果你添加了应该被测试的代码，请添加测试。确保所有测试通过。查看测试部分以获取更多信息。
+3. 如果你更改了 API，请更新文档。
+4. 确保你的代码 lints。
 
+### 改进文档
+我们欢迎以新文档或修订文档的形式提供有价值的贡献，这些文档提供进一步的清晰度或准确性。每个函数都应该有清晰的文档。文档良好的代码更容易审查和理解/扩展。
 
+## 风格指南
+对于代码文档，请遵循 [Google 风格指南](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings)。
 
-### Improving The Documentation
-We welcome valuable contributions in the form of new documentation or revised documentation that provide further clarity or accuracy. Each function should be clearly documented. Well-documented code is easier to review and understand/extend.
-
-## Styleguides
-For code documentation, please follow the [Google styleguide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings).

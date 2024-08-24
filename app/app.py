@@ -85,7 +85,7 @@ def update_model(endpoint):
         "Groq": "llama3-70b-8192",
         "OpenAI": "gpt-4o",
         "TogetherAI": "Qwen/Qwen2-72B-Instruct",
-        "Ollama": "llama3",
+        "Ollama": "llama3.1",
         "CUSTOM": "",
     }
     if endpoint == "CUSTOM":
@@ -282,12 +282,12 @@ with gr.Blocks(theme="soft", css=CSS, fill_height=True) as demo:
                 )
                 target_lang = gr.Textbox(
                     label="Target Lang",
-                    value="Spanish",
+                    value="Chinese",
                     elem_classes="lang",
                 )
             switch_btn = gr.Button(value="🔄️")
             country = gr.Textbox(
-                label="Country", value="Argentina", max_lines=1
+                label="Country", value="China", max_lines=1
             )
             with gr.Accordion("Advanced Options", open=False):
                 max_tokens = gr.Slider(

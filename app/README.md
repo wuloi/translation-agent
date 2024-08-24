@@ -1,55 +1,53 @@
+## 翻译代理 WebUI
 
-## Translation Agent WebUI
+该仓库包含一个 Gradio WebUI，用于翻译代理，该代理利用各种语言模型进行翻译。
 
-This repository contains a Gradio web UI for a translation agent that utilizes various language models for translation.
-
-### Preview
+### 预览
 
 ![webui](image.png)
 
-**Features:**
+**特性：**
 
-- **Tokenized Text:**  Displays translated text with tokenization, highlighting differences between original and translated words.
-- **Document Upload:** Supports uploading various document formats (PDF, TXT, DOC, etc.) for translation.
-- **Multiple API Support:**  Integrates with popular language models like:
+- **分词文本：** 显示带有分词的翻译文本，突出显示原始词和翻译词之间的差异。
+- **文档上传：** 支持上传各种文档格式（PDF、TXT、DOC 等）进行翻译。
+- **多个 API 支持：** 与流行的语言模型集成，如：
     - Groq
     - OpenAI
     - Ollama
     - Together AI
     ...
-- **Different LLM for reflection**: Now you can enable second Endpoint to use another LLM for reflection.
+- **不同的 LLM 用于反思：** 现在你可以启用第二个端点，使用另一个 LLM 进行反思。
 
+**开始使用：**
 
-**Getting Started**
-
-1. **Install Dependencies:**
+1. **安装依赖：**
 
     **Linux**
     ```bash
-        git clone https://github.com/andrewyng/translation-agent.git
-        cd translation-agent
-        poetry install --with app
-        poetry shell
+    git clone https://github.com/andrewyng/translation-agent.git 
+    cd translation-agent
+    poetry install --with app
+    poetry shell
     ```
     **Windows**
     ```bash
-        git clone https://github.com/andrewyng/translation-agent.git
-        cd translation-agent
-        poetry install --with app
-        poetry shell
+    git clone https://github.com/andrewyng/translation-agent.git 
+    cd translation-agent
+    poetry install --with app
+    poetry shell
     ```
 
-2. **Set API Keys:**
-   - Rename `.env.sample` to `.env`, you can add your API keys for each service:
+2. **设置 API 密钥：**
+   - 将 `.env.sample` 重命名为 `.env`，你可以为每项服务添加你的 API 密钥：
 
      ```
-     OPENAI_API_KEY="sk-xxxxx" # Keep this field
+     OPENAI_API_KEY="sk-xxxxx" # 保留此字段
      GROQ_API_KEY="xxxxx"
      TOGETHER_API_KEY="xxxxx"
      ```
-    - Then you can also set the API_KEY in webui.
+    - 然后你也可以在 WebUI 中设置 API_KEY。
 
-3. **Run the Web UI:**
+3. **运行 Web UI：**
 
     **Linux**
     ```bash
@@ -60,30 +58,30 @@ This repository contains a Gradio web UI for a translation agent that utilizes v
     python .\app\app.py
     ```
 
-4. **Access the Web UI:**
-   Open your web browser and navigate to `http://127.0.0.1:7860/`.
+4. **访问 Web UI：**
+   打开你的网络浏览器，导航到 `http://127.0.0.1:7860/`。
 
-**Usage:**
+**使用方法：**
 
-1. Select your desired translation API from the Endpoint dropdown menu.
-2. Input the source language, target language, and country(optional).
-3. Input the source text or upload your document file.
-4. Submit and get translation, the UI will display the translated text with tokenization and highlight differences.
-5. Enable Second Endpoint, you can add another endpoint by different LLMs for reflection.
-6. Using a custom endpoint, you can enter an OpenAI compatible API base url.
+1. 从端点下拉菜单中选择你想要使用的翻译 API。
+2. 输入源语言、目标语言和国家（可选）。
+3. 输入源文本或上传你的文档文件。
+4. 提交并获取翻译，UI 将显示带有分词和突出显示差异的翻译文本。
+5. 启用第二个端点，你可以添加另一个端点，通过不同的 LLMs 进行反思。
+6. 使用自定义端点，你可以输入一个与 OpenAI 兼容的 API 基础 URL。
 
-**Customization:**
+**定制：**
 
-- **Add New LLMs:**  Modify the `patch.py` file to integrate additional LLMs.
+- **添加新的 LLMs：** 修改 `patch.py` 文件以集成额外的 LLMs。
 
-**Contributing:**
+**贡献：**
 
-Contributions are welcome! Feel free to open issues or submit pull requests.
+欢迎贡献！随时提出问题或提交拉取请求。
 
-**License:**
+**许可证：**
 
-This project is licensed under the MIT License.
+本项目根据 MIT 许可证授权。
 
-**DEMO:**
+**演示：**
 
-[Huggingface Demo](https://huggingface.co/spaces/vilarin/Translation-Agent-WebUI)
+[Huggingface 演示](https://huggingface.co/spaces/vilarin/Translation-Agent-WebUI)
