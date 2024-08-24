@@ -150,7 +150,7 @@ def one_chunk_reflect_on_translation(
 
 为改进翻译写一份具体、有用和建设性的建议清单。
 每条建议应针对翻译的一个具体部分。
-只输出建议，别无其他。"""
+只输出建议，不要输出其他任何内容。"""
 
     else:
         reflection_prompt = f"""您的任务是仔细阅读从 {source_lang} 到 {target_lang} 的源文本和翻译，并给出建设性的批评和有用的建议来改进翻译。
@@ -173,7 +173,7 @@ def one_chunk_reflect_on_translation(
 
 为改进翻译写一份具体、有用和建设性的建议清单。
 每条建议应针对翻译的一个具体部分。
-只输出建议，别无其他。"""
+只输出建议，不要输出其他任何内容。"""
 
     reflection = get_completion(reflection_prompt, system_message=system_message)
     return reflection
@@ -226,7 +226,7 @@ def one_chunk_improve_translation(
 (iv) 术语（使用不当或使用不一致），
 (v) 其他错误。
 
-只输出新的翻译，别无其他。"""
+只输出新的翻译，不要输出其他任何内容。"""
 
     translation_2 = get_completion(prompt, system_message)
 
@@ -334,7 +334,7 @@ def multichunk_initial_translation(
 {chunk_to_translate}
 </TRANSLATE_THIS>
 
-只输出您被要求翻译的部分的翻译，别无其他。
+只输出您被要求翻译的部分的翻译，不要输出其他任何内容。
 """
 
     translation_chunks = []
@@ -412,7 +412,7 @@ def multichunk_reflect_on_translation(
 
 为改进翻译写一份具体、有用和建设性的建议清单。
 每条建议应针对翻译的一个具体部分。
-只输出建议，别无其他。"""
+只输出建议，不要输出其他任何内容。"""
 
     else:
         reflection_prompt = """您的任务是仔细阅读源文本和该文本的部分翻译，从 {source_lang} 翻译到 {target_lang}，并给出建设性的批评和有用的建议来改进翻译。
@@ -441,7 +441,7 @@ def multichunk_reflect_on_translation(
 
 为改进翻译写一份具体、有用和建设性的建议清单。
 每条建议应针对翻译的一个具体部分。
-只输出建议，别无其他。"""
+只输出建议，不要输出其他任何内容。"""
 
     reflection_chunks = []
     for i in range(len(source_text_chunks)):
@@ -531,7 +531,7 @@ def multichunk_improve_translation(
 (iv) 术语（在上下文中不合适或使用不一致），或
 (v) 其他错误。
 
-只输出指定部分的新翻译，别无其他。"""
+只输出指定部分的新翻译，不要输出其他任何内容。"""
 
     translation_2_chunks = []
     for i in range(len(source_text_chunks)):
