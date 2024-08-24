@@ -84,4 +84,4 @@
 
 **演示：**
 
-[Huggingface 演示](https://huggingface.co/spaces/vilarin/Translation-Agent-WebUI)
+[Huggingface 演示](https://huggingface.co/spaces/wuloi/translation-agent)
