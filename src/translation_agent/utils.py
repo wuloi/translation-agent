@@ -11,7 +11,9 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 # 读取本地 .env 文件
 load_dotenv()
 # 初始化 OpenAI API 客户端
-client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = openai.OpenAI(api_key=os.getenv("GROQ_API_KEY"),
+                       base_url=os.getenv("OpenAI_Compatibility_BASE_URL"),
+            )
 
 # 定义每个文本块的最大令牌数
 MAX_TOKENS_PER_CHUNK = (
@@ -23,7 +25,7 @@ MAX_TOKENS_PER_CHUNK = (
 def get_completion(
     prompt: str,
     system_message: str = "你是一个提供帮助的助手。",
-    model: str = "gpt-4-turbo",
+    model: str = os.getenv("OpenAI_Compatibility_MODEL"),
     temperature: float = 0.3,
     json_mode: bool = False,
 ) -> Union[str, dict]:
@@ -35,7 +37,7 @@ def get_completion(
         system_message (str, 可选): 为助手设置上下文的系统消息。
             默认为 "你是一个提供帮助的助手。"。
         model (str, 可选): 用于生成补全的 OpenAI 模型的名称。
-            默认为 "gpt-4-turbo"。
+            默认为 "llama-3.1-70b-versatile"。
         temperature (float, 可选): 控制生成文本的随机性的采样温度。
             默认为 0.3。
         json_mode (bool, 可选): 是否以 JSON 格式返回响应。
@@ -561,17 +563,17 @@ def multichunk_translation(
     source_lang, target_lang, source_text_chunks, country: str = ""
 ):
     """
-    Improves the translation of multiple text chunks based on the initial translation and reflection.
+    基于初始翻译和反思，改进多个文本块的翻译。
 
-    Args:
-        source_lang (str): The source language of the text chunks.
-        target_lang (str): The target language for translation.
-        source_text_chunks (List[str]): The list of source text chunks to be translated.
-        translation_1_chunks (List[str]): The list of initial translations for each source text chunk.
-        reflection_chunks (List[str]): The list of reflections on the initial translations.
-        country (str): Country specified for the target language
-    Returns:
-        List[str]: The list of improved translations for each source text chunk.
+    参数:
+        source_lang (str): 文本块的源语言。
+        target_lang (str): 翻译的目标语言。
+        source_text_chunks (List[str]): 需要翻译的源文本块列表。
+        translation_1_chunks (List[str]): 每个源文本块的初始翻译列表。
+        reflection_chunks (List[str]): 对初始翻译的反思列表。
+        country (str): 目标语言指定的国家
+    返回:
+        List[str]: 每个源文本块的改进翻译列表。
     """
 
     translation_1_chunks = multichunk_initial_translation(
