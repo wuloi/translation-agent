@@ -87,29 +87,29 @@ def rate_limit(get_max_per_minute):
 @rate_limit(lambda: RPM)
 def get_completion(
     prompt: str,
-    system_message: str = "You are a helpful assistant.",
+    system_message: str = "你是一个提供帮助的助手。",
     model: str = "gpt-4-turbo",
     temperature: float = 0.3,
     json_mode: bool = False,
 ) -> Union[str, dict]:
     """
-        Generate a completion using the OpenAI API.
+    使用 OpenAI API 生成补全。
 
-    Args:
-        prompt (str): The user's prompt or query.
-        system_message (str, optional): The system message to set the context for the assistant.
-            Defaults to "You are a helpful assistant.".
-        model (str, optional): The name of the OpenAI model to use for generating the completion.
-            Defaults to "gpt-4-turbo".
-        temperature (float, optional): The sampling temperature for controlling the randomness of the generated text.
-            Defaults to 0.3.
-        json_mode (bool, optional): Whether to return the response in JSON format.
-            Defaults to False.
+    参数:
+        prompt (str): 用户的提示或查询。
+        system_message (str, 可选): 设置助手上下文的系统消息。
+            默认为 "你是一个提供帮助的助手。"。
+        model (str, 可选): 用于生成补全的 OpenAI 模型的名称。
+            默认为 "gpt-4-turbo"。
+        temperature (float, 可选): 控制生成文本随机性的采样温度。
+            默认为 0.3。
+        json_mode (bool, 可选): 是否以 JSON 格式返回响应。
+            默认为 False。
 
-    Returns:
-        Union[str, dict]: The generated completion.
-            If json_mode is True, returns the complete API response as a dictionary.
-            If json_mode is False, returns the generated text as a string.
+    返回:
+        Union[str, dict]: 生成的补全。
+            如果 json_mode 为 True，则返回完整的 API 响应作为一个字典。
+            如果 json_mode 为 False，则返回生成的文本作为一个字符串。
     """
 
     model = MODEL
@@ -130,7 +130,7 @@ def get_completion(
             )
             return response.choices[0].message.content
         except Exception as e:
-            raise gr.Error(f"An unexpected error occurred: {e}") from e
+            raise gr.Error(f"发生了一个意外的错误：{e}") from e
     else:
         try:
             response = client.chat.completions.create(
@@ -144,7 +144,7 @@ def get_completion(
             )
             return response.choices[0].message.content
         except Exception as e:
-            raise gr.Error(f"An unexpected error occurred: {e}") from e
+            raise gr.Error(f"发生了一个意外的错误：{e}") from e
 
 
 utils.get_completion = get_completion

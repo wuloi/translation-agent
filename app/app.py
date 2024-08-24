@@ -34,13 +34,13 @@ def huanik(
 ):
     if not source_text or source_lang == target_lang:
         raise gr.Error(
-            "Please check that the content or options are entered correctly."
+            "请检查内容或选项是否输入正确。"
         )
 
     try:
         model_load(endpoint, base, model, api_key, temperature, rpm)
     except Exception as e:
-        raise gr.Error(f"An unexpected error occurred: {e}") from e
+        raise gr.Error(f"发生了意外的错误：{e}") from e
 
     source_text = re.sub(r"(?m)^\s*$\n?", "", source_text)
 
@@ -70,7 +70,7 @@ def huanik(
 
     final_diff = gr.HighlightedText(
         diff_texts(init_translation, final_translation),
-        label="Diff translation",
+        label="翻译对比",
         combine_adjacent=True,
         show_legend=True,
         visible=True,
@@ -89,15 +89,18 @@ def update_model(endpoint):
         "CUSTOM": "",
     }
     if endpoint == "CUSTOM":
+        # 如果选择自定义，使基础模型输入框可见
         base = gr.update(visible=True)
     else:
+        # 否则，隐藏基础模型输入框
         base = gr.update(visible=False)
+    # 返回更新后的模型映射和基础模型输入框的可见性状态
     return gr.update(value=endpoint_model_map[endpoint]), base
 
 
 def read_doc(path):
     file_type = path.split(".")[-1]
-    print(file_type)
+    print("文件类型：", file_type)
     if file_type in ["pdf", "txt", "py", "docx", "json", "cpp", "md"]:
         if file_type.endswith("pdf"):
             content = extract_pdf(path)
@@ -105,9 +108,11 @@ def read_doc(path):
             content = extract_docx(path)
         else:
             content = extract_text(path)
+        # 清除字符串开头和结尾的空白字符和换行符
         return re.sub(r"(?m)^\s*$\n?", "", content)
     else:
-        raise gr.Error("Oops, unsupported files.")
+        # 如果文件类型不支持，抛出错误
+        raise gr.Error("哎呀，不支持的文件类型。")
 
 
 def enable_sec(choice):
@@ -163,7 +168,7 @@ def close_btn_hide(output_diff):
 
 TITLE = """
     <div style="display: inline-flex;">
-        <div style="margin-left: 6px; font-size:32px; color: #6366f1"><b>Translation Agent</b> WebUI</div>
+        <div style="margin-left: 6px; font-size:32px; color: #6366f1"><b>翻译代理</b> WebUI</div>
     </div>
 """
 
@@ -236,26 +241,26 @@ with gr.Blocks(theme="soft", css=CSS, fill_height=True) as demo:
     with gr.Row():
         with gr.Column(scale=1) as menubar:
             endpoint = gr.Dropdown(
-                label="Endpoint",
+                label="端点",
                 choices=["OpenAI", "Groq", "TogetherAI", "Ollama", "CUSTOM"],
                 value="OpenAI",
             )
             choice = gr.Checkbox(
-                label="Additional Endpoint",
-                info="Additional endpoint for reflection",
+                label="附加端点",
+                info="用于反思的附加端点",
             )
             model = gr.Textbox(
-                label="Model",
+                label="模型",
                 value="gpt-4o",
             )
             api_key = gr.Textbox(
-                label="API_KEY",
+                label="API密钥",
                 type="password",
             )
-            base = gr.Textbox(label="BASE URL", visible=False)
+            base = gr.Textbox(label="基础URL", visible=False)
             with gr.Column(visible=False) as AddEndpoint:
                 endpoint2 = gr.Dropdown(
-                    label="Additional Endpoint",
+                    label="附加端点",
                     choices=[
                         "OpenAI",
                         "Groq",
@@ -266,80 +271,84 @@ with gr.Blocks(theme="soft", css=CSS, fill_height=True) as demo:
                     value="OpenAI",
                 )
                 model2 = gr.Textbox(
-                    label="Model",
+                    label="模型",
                     value="gpt-4o",
                 )
                 api_key2 = gr.Textbox(
-                    label="API_KEY",
+                    label="API密钥",
                     type="password",
                 )
-                base2 = gr.Textbox(label="BASE URL", visible=False)
+                base2 = gr.Textbox(label="基础URL", visible=False)
             with gr.Row():
                 source_lang = gr.Textbox(
-                    label="Source Lang",
+                    label="源语言",
                     value="English",
                     elem_classes="lang",
                 )
                 target_lang = gr.Textbox(
-                    label="Target Lang",
+                    label="目标语言",
                     value="Chinese",
                     elem_classes="lang",
                 )
             switch_btn = gr.Button(value="🔄️")
             country = gr.Textbox(
-                label="Country", value="China", max_lines=1
+                label="国家", value="China", max_lines=1
             )
-            with gr.Accordion("Advanced Options", open=False):
+            with gr.Accordion("高级选项", open=False):
                 max_tokens = gr.Slider(
-                    label="Max tokens Per Chunk",
+                    label="每块最大令牌数",
                     minimum=512,
                     maximum=2046,
                     value=1000,
                     step=8,
                 )
                 temperature = gr.Slider(
-                    label="Temperature",
+                    label="温度",
                     minimum=0,
                     maximum=1.0,
                     value=0.3,
                     step=0.1,
                 )
                 rpm = gr.Slider(
-                    label="Request Per Minute",
+                    label="每分钟请求次数",
                     minimum=1,
                     maximum=1000,
                     value=60,
                     step=1,
                 )
-
+                
+# 源文本：If one advances confidently in the direction of his dreams, and endeavors to live the life which he has imagined, he will meet with a success unexpected in common hours.
+# 初始翻译：如果一个人自信地朝着梦想的方向前进，并努力过着他所设想的人生，那么他将在平常时刻遇到出乎意料的成功。
+# 最终结果：如果他朝着梦想迈进，努力实现他所设想的人生，那么他就会在平常时刻获得意外的成功。
         with gr.Column(scale=4):
             source_text = gr.Textbox(
-                label="Source Text",
+                label="源文本",
                 value="If one advances confidently in the direction of his dreams, and endeavors to live the life which he has imagined, he will meet with a success unexpected in common hours.",
                 lines=12,
             )
-            with gr.Tab("Final"):
+            with gr.Tab("最终结果"):
                 output_final = gr.Textbox(
-                    label="Final Translation", lines=12, show_copy_button=True
+                    label="最终翻译", lines=12, show_copy_button=True
                 )
-            with gr.Tab("Initial"):
+            with gr.Tab("初始翻译"):
                 output_init = gr.Textbox(
-                    label="Init Translation", lines=12, show_copy_button=True
+                    label="初始翻译", lines=12, show_copy_button=True
                 )
-            with gr.Tab("Reflection"):
+            with gr.Tab("反思"):
                 output_reflect = gr.Textbox(
-                    label="Reflection", lines=12, show_copy_button=True
+                    label="反思", lines=12, show_copy_button=True
                 )
-            with gr.Tab("Diff"):
+            with gr.Tab("差异对比"):
                 output_diff = gr.HighlightedText(visible=False)
     with gr.Row():
-        submit = gr.Button(value="Translate")
-        upload = gr.UploadButton(label="Upload", file_types=["text"])
-        export = gr.DownloadButton(visible=False)
+        submit = gr.Button(value="翻译")
+        upload = gr.UploadButton(label="上传", file_types=["text"])
+        export = gr.DownloadButton(label="下载", visible=False)
         clear = gr.ClearButton(
-            [source_text, output_init, output_reflect, output_final]
+            [source_text, output_init, output_reflect, output_final],
+            value="清除"
         )
-        close = gr.Button(value="Stop", visible=False)
+        close = gr.Button(value="停止", visible=False)
 
     switch_btn.click(
         fn=switch,
